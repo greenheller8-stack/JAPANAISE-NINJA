@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Japanese Traditional Colors */
+  --ink-black: 0 0% 10%;
+  --paper-white: 40 33% 97%;
+  --sakura-pink: 350 100% 88%;
+  --samurai-red: 355 76% 45%;
+  --sky-blue: 205 75% 65%;
+  --roof-grey: 200 15% 30%;
+  --gold-accent: 45 90% 55%;
+
+  /* Theme Mapping */
+  --background: var(--paper-white);
+  --foreground: var(--ink-black);
+  
+  --primary: var(--samurai-red);
+  --primary-foreground: 0 0% 98%;
+  
+  --secondary: var(--roof-grey);
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 40 10% 90%;
+  --muted-foreground: 200 10% 40%;
+  
+  --accent: var(--sakura-pink);
+  --accent-foreground: var(--samurai-red);
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 200 15% 85%;
+  --input: 200 15% 85%;
+  --ring: var(--samurai-red);
+  
+  --radius: 0.5rem;
+
+  --font-display: 'Architects Daughter', cursive;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased font-body;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3Ccircle cx='13' cy='13' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Custom Utilities for Game UI */
+.game-panel {
+  @apply bg-[#fcfaf2] border-4 border-double border-primary/30 shadow-xl rounded-xl relative overflow-hidden;
+}
+
+.game-panel::before {
+  content: "";
+  @apply absolute inset-0 pointer-events-none opacity-5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
